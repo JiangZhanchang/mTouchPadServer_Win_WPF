@@ -22,6 +22,27 @@ namespace MTouchPadServerShell
         public MainWindow()
         {
             InitializeComponent();
+            InitService();
+        }
+
+        private ITouchServer _touchServer = null;
+        private void InitService()
+        {
+            _touchServer = new TouchServer();
+            _touchServer.Start(result =>
+                                  {
+                                      tb_ServerState.Text = result ? "Server running." : "Server failed to start.";
+                                  });
+        }
+
+        private void BtnOkClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.WindowState= WindowState.Minimized;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            _touchServer.Stop();
         }
     }
 }

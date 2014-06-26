@@ -1,8 +1,15 @@
 ﻿<Window x:Class="MTouchPadServerShell.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="MainWindow" Height="170" Width="375" WindowStartupLocation="CenterScreen" FontSize="18" Closed="Window_Closed">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Server status:" FontWeight="Bold"/>
+        <TextBlock Name="tb_ServerState" Grid.Row="1" Text="Server running at 192.168.3.39:2009."/>
+        <Button Name="btn_Ok" Content="OK" Grid.Row="2" Padding="25,1" Margin="0,10,0,0" HorizontalAlignment="Center" Click="BtnOkClick" />
     </Grid>
 </Window>
